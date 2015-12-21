@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header'
-import DevTools from '../containers/DevTools'
+import Header from '../components/Header'
+import DevTools from './DevTools'
 
 export default (props) =>
   <div>
