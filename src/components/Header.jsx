@@ -6,4 +6,6 @@ export default () =>
     <Link to="/">Home</Link>
     {' '}
     <Link to="counter">Counter</Link>
+    {' '}
+    <Link to="question">Question</Link>
   </div>
