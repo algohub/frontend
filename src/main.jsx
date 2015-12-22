@@ -5,7 +5,6 @@ import configureStore from './store/configureStore'
 import routes from './routes'
 import Router from 'react-router'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
-require('file?name=[name].[ext]!./index.html')
 
 const injectTapEventPlugin = require('react-tap-event-plugin')
 // Needed for onTouchTap

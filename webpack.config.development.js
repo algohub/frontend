@@ -3,6 +3,7 @@
 var webpack = require('webpack');
 var baseConfig = require('./webpack.config.base');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var config = Object.create(baseConfig);
 config.plugins = [
@@ -10,7 +11,10 @@ config.plugins = [
   new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('development')
-  })
+  }),
+  new CopyWebpackPlugin([
+    { from: './www/' }
+  ])
 ];
 
 module.exports = config;

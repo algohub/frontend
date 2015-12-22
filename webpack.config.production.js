@@ -2,6 +2,7 @@
 
 var webpack = require('webpack');
 var baseConfig = require('./webpack.config.base');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var config = Object.create(baseConfig);
 config.plugins = [
@@ -15,7 +16,10 @@ config.plugins = [
       screw_ie8: true,
       warnings: false
     }
-  })
+  }),
+  new CopyWebpackPlugin([
+    { from: './www/' }
+  ])
 ];
 
 module.exports = config;
