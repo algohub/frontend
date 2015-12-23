@@ -30,3 +30,6 @@ build/
 
 .jshintignore
 .jshintrc
+
+# IntelliJ
+.idea/

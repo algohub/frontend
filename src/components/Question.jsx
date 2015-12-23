@@ -8,10 +8,10 @@ export default () => (
     mode = "java"
     theme = "github"
     name = "my-ace-editor"
-    fontSize = "14"
-    showPrintMargin = "false"
-    maxLines = "50"
-    minLines = "25"
+    fontSize = { 14 }
+    showPrintMargin = { false }
+    maxLines = { 50 }
+    minLines = { 25 }
     editorProps={{ $blockScrolling: true }}
   />
 )

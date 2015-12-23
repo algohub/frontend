@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-const RaisedButton = require('material-ui/lib/raised-button')
+import RaisedButton from 'material-ui/lib/raised-button'
 
 class Counter extends Component {
   render() {
