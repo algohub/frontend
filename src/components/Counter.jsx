@@ -1,23 +1,21 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import RaisedButton from 'material-ui/lib/raised-button'
 
-class Counter extends Component {
-  render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props
-    return (
-      <div>
-        Clicked: {counter} times
-        {' '}
-        <RaisedButton label="+" secondary onTouchTap={increment}/>
-        {' '}
-        <button onClick={decrement}>-</button>
-        {' '}
-        <button onClick={incrementIfOdd}>Increment if odd</button>
-        {' '}
-        <button onClick={() => incrementAsync()}>Increment async</button>
-      </div>
-    )
-  }
+const Counter =  (props) => {
+  const { increment, incrementIfOdd, incrementAsync, decrement, counter } = props
+  return (
+    <div>
+      Clicked: {counter} times
+      {' '}
+      <RaisedButton label="+" secondary onTouchTap={increment}/>
+      {' '}
+      <button onClick={decrement}>-</button>
+      {' '}
+      <button onClick={incrementIfOdd}>Increment if odd</button>
+      {' '}
+      <button onClick={() => incrementAsync()}>Increment async</button>
+    </div>
+  )
 }
 
 Counter.propTypes = {
