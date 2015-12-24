@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import RaisedButton from 'material-ui/lib/raised-button'
 
-const Counter =  (props) => {
+const Counter = (props) => {
   const { increment, incrementIfOdd, incrementAsync, decrement, counter } = props
   return (
     <div>
