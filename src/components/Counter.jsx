@@ -5,6 +5,7 @@ const Counter = (props) => {
   const { increment, incrementIfOdd, incrementAsync, decrement, counter } = props
   return (
     <div>
+
       Clicked: {counter} times
       {' '}
       <RaisedButton label="+" secondary onTouchTap={increment}/>

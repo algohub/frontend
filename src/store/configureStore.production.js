@@ -4,7 +4,7 @@ import rootReducer from '../reducers'
 
 const finalCreateStore = applyMiddleware(
   thunk
-)(createStore)
+)(createStore);
 
 export default function configureStore(initialState) {
   return finalCreateStore(rootReducer, initialState)

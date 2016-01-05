@@ -3,9 +3,7 @@ const { Colors, Spacing } = Styles
 const { ColorManipulator } = Utils
 
 export default {
-  spacing: Spacing,
-  fontFamily: 'Roboto, sans-serif',
-  palette: {
+  spacing: Spacing, fontFamily: 'Roboto, sans-serif', palette: {
     primary1Color: Colors.blue700,
     primary2Color: Colors.blue900,
     primary3Color: Colors.grey400,
@@ -18,6 +16,7 @@ export default {
     borderColor: Colors.grey300,
     disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
     pickerHeaderColor: Colors.blue700,
-    clockCircleColor: ColorManipulator.fade(Colors.darkBlack, 0.07),
+    clockCircleColor: ColorManipulator.fade(Colors.darkBlack, 0.07)
   }
 }
+
