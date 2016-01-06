@@ -24,7 +24,6 @@
     "babel-polyfill": "^6.3.14",
     "babel-runtime": "^6.3.19",
     "history": "^1.17.0",
-    "material-ui": "^0.14.0-rc2",
     "react": "^0.14.3",
     "react-ace": "^3.0.0",
     "react-bootstrap": "^0.28.1",
