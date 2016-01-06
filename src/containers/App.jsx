@@ -5,11 +5,8 @@ import DevTools from './DevTools'
 
 const App = React.createClass({
   propTypes: {
-    children: React.PropTypes.node,
-    history: React.PropTypes.object,
-    location: React.PropTypes.object
-  },
-  render() {
+    children: React.PropTypes.node, history: React.PropTypes.object, location: React.PropTypes.object
+  }, render() {
     const childrenStyle = {
       paddingTop: '48px'
     }
@@ -18,15 +15,17 @@ const App = React.createClass({
         <nav className="nav navbar navbar-default navbar-fixed-top" role="navigation">
           <div className="container-fluid">
             <div className="nav-header">
-              <button className="navbar-toggle collapsed"
+              <button
+                className="navbar-toggle collapsed"
                 type="button" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1">
+                data-target="#bs-example-navbar-collapse-1"
+              >
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href='/'> Algohub </a>
+              <a className="navbar-brand" href="/"> Algohub </a>
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
@@ -60,5 +59,3 @@ const App = React.createClass({
 })
 
 export default App
-
-

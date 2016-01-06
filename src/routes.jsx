@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld'
 import Counter from './containers/Counter'
 import Question from './components/Question'
 import Register from './components/Register'
-import Login from './components/Login'
+import Login from './containers/Login'
 
 
 const routes = (
@@ -16,6 +16,6 @@ const routes = (
         <Route path="register" component={Register} />
         <Route path="login" component={Login} />
     </Route>
-);
+)
 
 export default routes

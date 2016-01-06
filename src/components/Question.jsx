@@ -4,7 +4,7 @@ import 'brace/mode/java'
 import 'brace/theme/github'
 
 export default () => (
-  <AceEditor style={{marginTop: 1 + 'em'}}
+  <AceEditor style={{ marginTop: 1 + 'em' }}
     mode = "java"
     theme = "github"
     name = "my-ace-editor"
@@ -12,6 +12,6 @@ export default () => (
     showPrintMargin = { false }
     maxLines = { 50 }
     minLines = { 25 }
-    editorProps={{$blockScrolling: true}}
+    editorProps={{ $blockScrolling: true }}
   />
 )
