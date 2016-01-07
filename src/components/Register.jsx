@@ -1,20 +1,27 @@
-import React from 'react'
-// import ReactScriptLoader from 'react-script-loader';
+import React, { PropTypes } from 'react'
 import { ReactScriptLoaderMixin } from 'react-script-loader'
 
-// var ReactScriptLoaderMixin = require('react-script-loader').ReactScriptLoaderMixin;
-
+let recaptchaResponse
 window.recaptchaCallback = function callback() {
   /*eslint-disable */
   grecaptcha.render('recaptcha', {
     sitekey: '6Le0jxETAAAAANoyIxTIsgiG90S0Sz45NOVLm77P', callback(response) {
       console.log(response)
+      recaptchaResponse = response
     }
   })
   /*eslint-disable */
 }
 
 const Register = React.createClass({
+//class Register extends Component{
+
+  propTypes: {
+    registerUser: PropTypes.func.isRequired
+    //registerUser: PropTypes.func.isRequired
+    //registerUser: React.PropTypes.func.isRequired
+  },
+
   mixins: [ReactScriptLoaderMixin], onScriptLoaded() {
   }, onScriptError() {
   }, // this function tells ReactScriptLoaderMixin where to load the script from
@@ -22,6 +29,19 @@ const Register = React.createClass({
     return 'https://www.google.com/recaptcha/api.js?onload=recaptchaCallback&render=explicit'
   }, deferOnScriptLoaded() {
     return true
+  },
+
+  handleSubmit(e) {
+    console.log('inside register handleSubmit')
+    const email = this.refs.email.value
+    const password = this.refs.password.value
+    const firstname = this.refs.firstname.value
+    const lastname = this.refs.lastname.value
+    const occupation = this.refs.occupation.value
+    const gender = this.refs.gender.value
+    console.log(recaptchaResponse)
+    e.preventDefault()
+    this.props.registerUser()
   },
 
   render() {
@@ -35,7 +55,7 @@ const Register = React.createClass({
             </div>
           </div>
           <div className="panel-body">
-            <form role="form" className="form-horizontal" id="signupform" onSubmit={this.handleSubmit} action="/signup" method="POST" >
+            <form role="form" className="form-horizontal" id="signupform" onSubmit={this.handleSubmit}>
               <div className="alert alert-danger" style={{ display: 'none' }} id="signupalert">
                 <p>Error:</p>
                 <span />
@@ -43,61 +63,79 @@ const Register = React.createClass({
               <div className="form-group">
                 <label className="col-md-3 control-label" htmlFor="email">Email</label>
                 <div className="col-md-9">
-                  <input type="text" placeholder="Email Address" name="email" className="form-control" />
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                    className="form-control"
+                    ref="email"
+                  />
                 </div>
               </div>
               <div className="form-group">
                 <label className="col-md-3 control-label" htmlFor="firstname">First Name</label>
                 <div className="col-md-9">
-                  <input type="text" placeholder="First Name" name="firstname" className="form-control" />
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    ref="firstname"
+                    className="form-control" />
                 </div>
               </div>
               <div className="form-group">
                 <label className="col-md-3 control-label" htmlFor="lastname">Last Name</label>
                 <div className="col-md-9">
-                  <input type="text" placeholder="Last Name" name="lastname" className="form-control" />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    ref="lastname"
+                    className="form-control"
+                  />
                 </div>
               </div>
               <div className="form-group">
                 <label className="col-md-3 control-label" htmlFor="password">Password</label>
                 <div className="col-md-9">
-                  <input type="password" placeholder="Password" name="passwd" className="form-control" />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    ref="password"
+                    className="form-control" />
                 </div>
               </div>
 
               <div className="form-group">
                 <label className="col-md-3 control-label" htmlFor="password" style={{ paddingTop: '0px' }}>Confirm Password</label>
                 <div className="col-md-9">
-                  <input type="password" placeholder="Confirm Password" name="passwd_crf" className="form-control" />
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    ref="password_crf"
+                    className="form-control" />
                 </div>
               </div>
 
               <div className="form-group">
                 <label className="col-md-3 control-label" htmlFor="gender">Gender</label>
-                <div className="col-md-9" style={{ marginTop: '7px' }}>
-                  <fieldset>
-                    <input id="female" name="gender" type="radio" value="female" style={{ marginRight: '5px' }}/>
-                    <label htmlFor="female" style={{ marginRight: '10px', fontWeight: '400' }}>Female</label>
-                    <input id="male" name="gender" type="radio" value="male" style={{ marginRight: '5px' }}/>
-                    <label style={{ fontWeight: '400' }} htmlFor="male">Male</label>
-                  </fieldset>
+                <div className="col-md-9">
+                  <select id="gender" ref="gender" className="form-control" >
+                    <option value="">Select</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                  </select>
                 </div>
               </div>
-
               <div className="form-group">
-                <label className="col-md-3 control-label" htmlFor="gender">Occupation</label>
-                <div className="col-md-9" style={{ marginTop: '7px' }}>
-                  <fieldset>
-                    <input id="student" name="occupation" type="radio" value="student" style={{ marginRight: '5px' }} />
-                    <label htmlFor="stduent" style={{ marginRight: '10px', fontWeight: '400' }}>Student</label>
-                    <input id="engineer" name="occupation" type="radio" value="engineer" style={{ marginRight: '5px' }}/>
-                    <label htmlFor="engineer" style={{ marginRight: '10px', fontWeight: '400' }}>Engineer</label>
-                    <input id="other" name="occupation" type="radio" value="other" style={{ marginRight: '5px' }}/>
-                    <label htmlFor="other" style={{ fontWeight: '400' }}>Other</label>
-                  </fieldset>
+                <label className="col-md-3 control-label" htmlFor="occupation">Occupation</label>
+                <div className="col-md-9">
+                  <select id="occupation" ref="occupation" className="form-control" >
+                    <option value="">Select</option>
+                    <option value="student">Student</option>
+                    <option value="engineer">Engineer</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
               </div>
-
               <div className="form-group">
                 <div className="col-md-offset-3">
                   <div id="recaptcha" style={{ marginLeft: '15px' }}></div>
@@ -105,11 +143,11 @@ const Register = React.createClass({
               </div>
 
               <div className="form-group">
-                                {/* Button */}
                 <div className="col-md-offset-3 col-md-9">
                   <button className="btn btn-info" type="button" id="btn-signup" type="submit">
                     <i className="icon-hand-right" />
-                  &nbsp; Sign Up</button>
+                  &nbsp; Sign Up
+                  </button>
                 </div>
               </div>
 
@@ -121,5 +159,9 @@ const Register = React.createClass({
     )
   }
 })
+
+//Register.propTypes = {
+//  registerUser: PropTypes.func.isRequired
+//}
 
 export default Register
