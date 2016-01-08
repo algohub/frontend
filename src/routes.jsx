@@ -4,7 +4,7 @@ import App from './containers/App'
 import HelloWorld from './components/HelloWorld'
 import Counter from './containers/Counter'
 import Question from './components/Question'
-import Register from './components/Register'
+import Register from './containers/Register'
 import Login from './containers/Login'
 
 

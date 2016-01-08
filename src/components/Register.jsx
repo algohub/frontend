@@ -16,11 +16,9 @@ window.recaptchaCallback = function callback() {
 const Register = React.createClass({
 //class Register extends Component{
 
-  propTypes: {
-    registerUser: PropTypes.func.isRequired
-    //registerUser: PropTypes.func.isRequired
-    //registerUser: React.PropTypes.func.isRequired
-  },
+  //propTypes: {
+  //  register: PropTypes.func.isRequired
+  //},
 
   mixins: [ReactScriptLoaderMixin], onScriptLoaded() {
   }, onScriptError() {
@@ -41,7 +39,7 @@ const Register = React.createClass({
     const gender = this.refs.gender.value
     console.log(recaptchaResponse)
     e.preventDefault()
-    this.props.registerUser()
+    this.props.register(email, password, occupation, gender, recaptchaResponse)
   },
 
   render() {
@@ -160,8 +158,8 @@ const Register = React.createClass({
   }
 })
 
-//Register.propTypes = {
-//  registerUser: PropTypes.func.isRequired
-//}
+Register.propTypes = {
+  register: PropTypes.func.isRequired
+}
 
 export default Register
