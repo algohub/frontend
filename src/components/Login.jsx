@@ -9,7 +9,7 @@ class Login extends Component {
     const password = this.refs.password.value
     console.log(email + password)
     if (email && password) {
-      this.props.loginUser()
+      this.props.login({ username: email, password: password })
     }
   }
 
@@ -74,7 +74,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired
 }
 
 export default Login
