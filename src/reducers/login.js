@@ -1,42 +1,34 @@
-//import { LOGIN_USER } from '../actions/login'
-//
-//export default function login(state = '', action) {
-//  console.log('reducers login get called')
-//  switch (action.type) {
-//    case LOGIN_USER:
-//      console.log('inside case LOGIN_USER in reducers')
-//      return 'login'
-//    default:
-//      return state
-//  }
-//}
-
-import { LOGIN_ATTEMPT, LOGGED_FAILED, LOGGED_SUCCESSFULLY } from '../actions/login'
+import { LOGIN_REQUEST, LOGGED_FAILED, LOGGED_SUCCESSFULLY } from '../actions/login'
 import Immutable from 'Immutable'
 
 const initialState = new Immutable.Map({
-  email: '',
-  password: '',
+  email: null,
   isLoggingIn: false,
   isLoggedIn: false,
-  error: null
+  error: null,
+  errorStatus: null
 })
 
 export default function login(state = initialState, action) {
   switch (action.type) {
-    case LOGIN_ATTEMPT:
+    case LOGIN_REQUEST:
       return state.merge({
-        isLoggingIn: true, isLoggedIn: false, email: action.email, password: action.password // Note you shouldn't
-                                                                                             // store user's password
-                                                                                             // in real apps
+        isLoggingIn: true,
+        isLoggedIn: false,
+        email: action.email
       })
     case LOGGED_FAILED:
       return state.merge({
-        error: action.error, isLoggingIn: false, isLoggedIn: false
+        error: action.error,
+        isLoggingIn: false,
+        errorStatus: action.errorStatus,
+        isLoggedIn: false
       })
     case LOGGED_SUCCESSFULLY:
       return state.merge({
-        error: null, isLoggingIn: false, isLoggedIn: true
+        email: action.email,
+        isLoggingIn: false,
+        isLoggedIn: true
       })
     default:
       return state

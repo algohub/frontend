@@ -14,12 +14,6 @@ window.recaptchaCallback = function callback() {
 }
 
 const Register = React.createClass({
-//class Register extends Component{
-
-  //propTypes: {
-  //  register: PropTypes.func.isRequired
-  //},
-
   mixins: [ReactScriptLoaderMixin], onScriptLoaded() {
   }, onScriptError() {
   }, // this function tells ReactScriptLoaderMixin where to load the script from
@@ -32,14 +26,22 @@ const Register = React.createClass({
   handleSubmit(e) {
     console.log('inside register handleSubmit')
     const email = this.refs.email.value
+    const username = this.refs.username.value
     const password = this.refs.password.value
     const firstname = this.refs.firstname.value
     const lastname = this.refs.lastname.value
     const occupation = this.refs.occupation.value
     const gender = this.refs.gender.value
-    console.log(recaptchaResponse)
+    const captcha = {vendor:'recaptcha', response:recaptchaResponse, remoteip:userip}
     e.preventDefault()
-    this.props.register(email, password, occupation, gender, recaptchaResponse)
+    //this.props.register(email, password, occupation, gender, recaptchaResponse)
+    this.props.register({
+        username,
+        password,
+        email,
+        gender,
+        occupation,
+        captcha})
   },
 
   render() {
@@ -68,6 +70,16 @@ const Register = React.createClass({
                     className="form-control"
                     ref="email"
                   />
+                </div>
+              </div>
+              <div className="form-group">
+                <label className="col-md-3 control-label" htmlFor="username">User Name</label>
+                <div className="col-md-9">
+                  <input
+                    type="text"
+                    placeholder="User Name"
+                    ref="username"
+                    className="form-control" />
                 </div>
               </div>
               <div className="form-group">
@@ -118,8 +130,8 @@ const Register = React.createClass({
                 <div className="col-md-9">
                   <select id="gender" ref="gender" className="form-control" >
                     <option value="">Select</option>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                   </select>
                 </div>
               </div>
@@ -128,9 +140,9 @@ const Register = React.createClass({
                 <div className="col-md-9">
                   <select id="occupation" ref="occupation" className="form-control" >
                     <option value="">Select</option>
-                    <option value="student">Student</option>
-                    <option value="engineer">Engineer</option>
-                    <option value="other">Other</option>
+                    <option value="Student">Student</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
               </div>

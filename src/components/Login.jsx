@@ -9,7 +9,7 @@ class Login extends Component {
     const password = this.refs.password.value
     console.log(email + password)
     if (email && password) {
-      this.props.login({ username: email, password: password })
+      this.props.login({ email, password })
     }
   }
 
